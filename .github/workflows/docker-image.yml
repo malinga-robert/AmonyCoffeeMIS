@@ -45,6 +45,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: AmonyCoffeeMIS/Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/devopstest:latest, ${{ secrets.DOCKERHUB_USERNAME }}/devopstest:${{ github.run_number }}
