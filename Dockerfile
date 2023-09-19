@@ -13,5 +13,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /App
 COPY --from=build-env /App/out .
 EXPOSE 7208
-ENTRYPOINT ["dotnet", "DotNet.AmonyCoffeeMIS.dll"]
+ENTRYPOINT ["dotnet", "AmonyCoffeeMIS\bin\Release\net7.0\AmonyCoffeeMIS.dll"]
 
