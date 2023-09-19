@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: DeVops-App
+name: CI-build-and-push-image-for-dotnetapp
 
 # Controls when the action will run. 
 on:
@@ -11,7 +11,7 @@ on:
       - .vscode/**
       - .gitignore
   pull_request:
-    branches: [ master ]
+    branches: [ master]
     paths-ignore:
       - README.md
       - .vscode/**
@@ -38,8 +38,8 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.robzo }}
-          password: ${{ secrets.devopsapp }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -47,4 +47,4 @@ jobs:
           context: .
           file: ./LearnSmartCoding.API/Dockerfile
           push: true
-          tags: ${{ secrets.robzo }}/devopstest:latest, ${{ secrets.robzo }}/devopstest:${{ github.run_number }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dockerfordotnetapi:latest, ${{ secrets.DOCKERHUB_USERNAME }}/dockerfordotnetapi:${{ github.run_number }}
