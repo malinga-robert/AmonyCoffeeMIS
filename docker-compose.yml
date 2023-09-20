@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  sqlite3:
+    container_name: sqlite3_container
+    image: keinos/sqlite3:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      # Modify following line
+      # - path-to/your/databases/sqlite3:/root/db/
+      # -https://hub.docker.com/r/keinos/sqlite3
+      - ./db/:/root/db/
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on: 
+      -db
+    ports:
+      - '9000:9000' # expose ports - HOST:CONTAINER
+    restart: unless-stopped
+
+# version: '3.4'
+
+# services:
+#   devopstest:
+#     image: ${DOCKER_REGISTRY-}devopstest
+#     build:
+#       context: .
+#       dockerfile: ./Dockerfile
+#     ports:
+#       - "7208:7208"
+#     environment:
+#       - ASPNETCORE_ENVIRONMENT=Development
+#       - SimpleProperty="hello-from-code-compose"
+#     depends_on: 
+#       # - seq_in_dc
+#       -db
+
+#   # seq_in_dc: 
+#   db:    
+#     # image: datalust/seq   
+#     image: datalust/db   
+#     ports:
+#       - '8008:80'      
+#     environment:
+#       - ACCEPT_EULA=Y 
+      
