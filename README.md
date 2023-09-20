@@ -35,6 +35,20 @@ Run the app:
 
 Access the application on this URL: https://localhost:7208/
 
+#To manually build the Docker image:
 
+```docker build -t amonycoffeemis:v1 .```
+
+#To manually run the Docker image:
+
+```docker run --rm -d -p 5555:80/tcp amonycoffeemis:v1```
+
+#Build the Docker-Compose file  
+
+``` docker-compose build```
+#Run the Docker-Compose file  
+
+```docker-compose up```
+  
 
 
